@@ -8,14 +8,22 @@ import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
+  Button,
   Text,
   View,
   NativeModules
 } from 'react-native';
 const Permissions = require('react-native-permissions');
-const BroadcastView = require('./BroadcastView.js');
+const BroadcastView = require('./BroadcastView');
+
 
 export default class RNBroadcast extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {live: false, rtmpURL: ''};
+  }
+
   _requestCamera() {
     Permissions.requestPermission('camera')
       .then(response => {
@@ -54,34 +62,28 @@ export default class RNBroadcast extends Component {
           this._requestMicrophone()
         }
       });
+      console.log("trying to start")
 
+  }
+  _toggleLive = () => {
+    this.setState({ live: !this.state.live, rtmpURL: 'rtmp://a.rtmp.youtube.com/live2/hsa4-3pyd-7s00-2qmz' });
   }
 
   render() {
     return (
-        <BroadcastView />
-
-    );
+      <View>
+        <BroadcastView live={this.state.live} rtmpURL={this.state.rtmpURL} />
+        <Button
+          title='Toggle'
+          onPress={this._toggleLive}
+          style={styles.toggleButton}
+        />
+      </View>
+    )
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
 });
 
 AppRegistry.registerComponent('RNBroadcast', () => RNBroadcast);

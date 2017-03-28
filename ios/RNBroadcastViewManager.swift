@@ -13,4 +13,5 @@ class RNBroadcastViewManager : RCTViewManager {
   override func view() -> UIView! {
     return RNBroadcastView();
   }
+
 }
