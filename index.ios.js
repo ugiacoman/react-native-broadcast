@@ -13,7 +13,7 @@ import {
   NativeModules
 } from 'react-native';
 const Permissions = require('react-native-permissions');
-
+const BroadcastView = require('./BroadcastView.js');
 
 export default class RNBroadcast extends Component {
   _requestCamera() {
@@ -54,24 +54,13 @@ export default class RNBroadcast extends Component {
           this._requestMicrophone()
         }
       });
-    var Broadcast = NativeModules.Broadcast
-    Broadcast.addEvent("boby", "sanders")
+
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
+        <BroadcastView />
+
     );
   }
 }
