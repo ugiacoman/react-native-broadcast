@@ -11,6 +11,7 @@ class RNBroadcastView: UIView, LFLiveSessionDelegate {
   
   var rtmpURL = ""
   
+  
   var session: LFLiveSession = {
     let audioConfiguration = LFLiveAudioConfiguration.defaultConfiguration(for: LFLiveAudioQuality.high)
     let videoConfiguration = LFLiveVideoConfiguration.defaultConfiguration(for: LFLiveVideoQuality.high2, outputImageOrientation: .landscapeRight)
@@ -35,38 +36,27 @@ class RNBroadcastView: UIView, LFLiveSessionDelegate {
     }
   }
   
+  var cameraPosition: String = "" {
+    willSet {
+      if cameraPosition == "front" {
+        session.captureDevicePosition = AVCaptureDevicePosition.front
+      } else if cameraPosition == "back" {
+        session.captureDevicePosition = AVCaptureDevicePosition.back
+      }
+    }
+  }
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     session.delegate = self
     let bounds = UIScreen.main.bounds
     print("bounds", bounds)
     let camera = UIView(frame: CGRect(x: 0, y: 0, width: bounds.size.width, height: bounds.size.height))
-    camera.layer.borderWidth = 2
-    camera.layer.borderColor = UIColor.red.cgColor
     session.preView = camera
     self.addSubview(camera)
-    requestAccessForVideo()
-  }
-  
-  func requestAccessForVideo() -> Void {
-//    let status = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo);
     session.running = true
   }
-  
-  
-//  @objc
-//  func startLive() {
-//    let stream = LFLiveStreamInfo()
-//    stream.url = "your server rtmp url";
-//    print("started!!!!!!!!!!!")
-//    session.startLive(stream)
-//  }
-//  
-//  @objc
-//  func stopLive() {
-//    session.stopLive()
-//  }
-  
+
   
   // liveSession
   func liveSession(_ session: LFLiveSession?, debugInfo: LFLiveDebug?) {

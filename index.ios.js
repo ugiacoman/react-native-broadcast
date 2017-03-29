@@ -21,7 +21,11 @@ export default class RNBroadcast extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {live: false, rtmpURL: ''};
+    this.state = {
+      live: false,
+      rtmpURL: '',
+      cameraPosition: 'front',
+    }
   }
 
   _requestCamera() {
@@ -66,24 +70,47 @@ export default class RNBroadcast extends Component {
 
   }
   _toggleLive = () => {
-    this.setState({ live: !this.state.live, rtmpURL: 'rtmp://a.rtmp.youtube.com/live2/hsa4-3pyd-7s00-2qmz' });
+    this.setState({ live: !this.state.live, rtmpURL: 'rtmp://a.rtmp.youtube.com/live2/hsa4-3pyd-7s00-2qmz'});
+  }
+
+  _toggleCamera = () => {
+    if (this.state.cameraPosition === 'front') {
+      this.setState({ cameraPosition: 'back' })
+    } else {
+      this.setState({ cameraPosition: 'front' })
+    }
   }
 
   render() {
     return (
       <View>
-        <BroadcastView live={this.state.live} rtmpURL={this.state.rtmpURL} />
-        <Button
-          title='Toggle'
-          onPress={this._toggleLive}
-          style={styles.toggleButton}
-        />
+        <BroadcastView live={this.state.live} rtmpURL={this.state.rtmpURL} cameraPosition={this.state.cameraPosition} />
+        <View style={styles.container}>
+          <Button
+            title='Toggle Stream'
+            onPress={this._toggleLive}
+            style={styles.toggleLive}
+          />
+          <Button
+            title='Toggle Camera'
+            onPress={this._toggleCamera}
+            style={styles.toggleCamera}
+          />
+        </View>
       </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
+  // container: {
+  //   flex: 1,
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  // },
+  // toggleLive: {
+  //   top: 50,
+  // }
 });
 
 AppRegistry.registerComponent('RNBroadcast', () => RNBroadcast);

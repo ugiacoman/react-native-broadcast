@@ -14,4 +14,5 @@
 @interface RCT_EXTERN_MODULE(RNBroadcastViewManager, RCTViewManager)
 RCT_EXPORT_VIEW_PROPERTY(live, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(rtmpURL, NSString)
+RCT_EXPORT_VIEW_PROPERTY(cameraPosition, NSString)
 @end

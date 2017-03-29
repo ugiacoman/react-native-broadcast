@@ -10,6 +10,7 @@ class BroadcastView extends React.Component {
 BroadcastView.propTypes = {
   live: React.PropTypes.bool,
   rtmpURL: React.PropTypes.string,
+  cameraPosition: React.PropTypes.string,
 }
 
 var RNBroadcastView = requireNativeComponent('RNBroadcastView', BroadcastView);
