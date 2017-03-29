@@ -36,7 +36,7 @@ class RNBroadcastView: UIView, LFLiveSessionDelegate {
     }
   }
   
-  var cameraPosition: String = "" {
+  var cameraPosition: String = "front" {
     willSet {
       if cameraPosition == "front" {
         session.captureDevicePosition = AVCaptureDevicePosition.front

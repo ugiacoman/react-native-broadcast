@@ -14,7 +14,7 @@ import {
   NativeModules
 } from 'react-native';
 const Permissions = require('react-native-permissions');
-const BroadcastView = require('./BroadcastView');
+const BroadcastView = require('./broadcastView');
 
 
 export default class RNBroadcast extends Component {
@@ -74,6 +74,7 @@ export default class RNBroadcast extends Component {
   }
 
   _toggleCamera = () => {
+    console.log('Current Camera position', this.state.cameraPosition)
     if (this.state.cameraPosition === 'front') {
       this.setState({ cameraPosition: 'back' })
     } else {
