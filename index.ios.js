@@ -14,7 +14,7 @@ import {
   NativeModules
 } from 'react-native';
 const Permissions = require('react-native-permissions');
-const BroadcastView = require('./broadcastView');
+const BroadcastView = require('./broadcast');
 
 
 export default class RNBroadcast extends Component {
