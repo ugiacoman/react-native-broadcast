@@ -653,7 +653,6 @@
 		4BC760331E92CA67000373DA /* UIControl+YYAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+YYAdd.m"; sourceTree = "<group>"; };
 		4BC760341E92CA67000373DA /* UIView+YYAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YYAdd.h"; sourceTree = "<group>"; };
 		4BC760351E92CA67000373DA /* UIView+YYAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YYAdd.m"; sourceTree = "<group>"; };
-		B3E7B5881CC2AC0600A0062D /* RNBroadcast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNBroadcast.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNBroadcast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNBroadcast.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1220,7 +1219,6 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				B3E7B5881CC2AC0600A0062D /* RNBroadcast.h */,
 				B3E7B5891CC2AC0600A0062D /* RNBroadcast.m */,
 				4BC7602F1E92CA67000373DA /* LFLivePreview.h */,
 				4BC760301E92CA67000373DA /* LFLivePreview.m */,

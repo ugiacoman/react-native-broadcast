@@ -1,14 +1,17 @@
 
-#import "RNBroadcast.h"
 #import "LFLivePreview.h"
+#import <React/RCTViewManager.h>
 
-@implementation RNBroadcast
+@interface RNBroadcastViewManager : RCTViewManager
+@end
 
-- (dispatch_queue_t)methodQueue
-{
-    return dispatch_get_main_queue();
-}
+@implementation RNBroadcastViewManager
+
 RCT_EXPORT_MODULE()
 
+- (UIView *)view
+{
+    return [[LFLivePreview alloc] initWithFrame:self.view.bounds];
+}
+
 @end
-  
