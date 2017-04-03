@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B00137B1E92A69900FE1DD6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B00137A1E92A69900FE1DD6 /* UIKit.framework */; };
+		4B00137D1E92A69F00FE1DD6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B00137C1E92A69F00FE1DD6 /* Foundation.framework */; };
+		4B00137F1E92A6A800FE1DD6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B00137E1E92A6A800FE1DD6 /* AVFoundation.framework */; };
+		4B0013811E92A6B000FE1DD6 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B0013801E92A6B000FE1DD6 /* VideoToolbox.framework */; };
+		4B0013831E92A6B700FE1DD6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B0013821E92A6B700FE1DD6 /* AudioToolbox.framework */; };
 		B3E7B58A1CC2AC0600A0062D /* RNBroadcast.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNBroadcast.m */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +29,11 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNBroadcast.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNBroadcast.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B00137A1E92A69900FE1DD6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		4B00137C1E92A69F00FE1DD6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4B00137E1E92A6A800FE1DD6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		4B0013801E92A6B000FE1DD6 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		4B0013821E92A6B700FE1DD6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B3E7B5881CC2AC0600A0062D /* RNBroadcast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNBroadcast.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNBroadcast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNBroadcast.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -33,6 +43,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B0013831E92A6B700FE1DD6 /* AudioToolbox.framework in Frameworks */,
+				4B0013811E92A6B000FE1DD6 /* VideoToolbox.framework in Frameworks */,
+				4B00137F1E92A6A800FE1DD6 /* AVFoundation.framework in Frameworks */,
+				4B00137D1E92A69F00FE1DD6 /* Foundation.framework in Frameworks */,
+				4B00137B1E92A69900FE1DD6 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,12 +62,25 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		4B0013791E92A69800FE1DD6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4B0013821E92A6B700FE1DD6 /* AudioToolbox.framework */,
+				4B0013801E92A6B000FE1DD6 /* VideoToolbox.framework */,
+				4B00137E1E92A6A800FE1DD6 /* AVFoundation.framework */,
+				4B00137C1E92A69F00FE1DD6 /* Foundation.framework */,
+				4B00137A1E92A69900FE1DD6 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
 				B3E7B5881CC2AC0600A0062D /* RNBroadcast.h */,
 				B3E7B5891CC2AC0600A0062D /* RNBroadcast.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
+				4B0013791E92A69800FE1DD6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -197,7 +225,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = (
-				"$(inherited)",
+					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",

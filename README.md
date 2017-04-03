@@ -18,6 +18,7 @@
 2. Go to `node_modules` ➜ `react-native-broadcast` and add `RNBroadcast.xcodeproj`
 3. In XCode, in the project navigator, select your project. Add `libRNBroadcast.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
 4. Run your project (`Cmd+R`)<
+5. Need to add Link binary to `libz` & `libstdc++` into final project
 
 #### Android
 
@@ -50,4 +51,3 @@ import RNBroadcast from 'react-native-broadcast';
 // TODO: What to do with the module?
 RNBroadcast;
 ```
-  
