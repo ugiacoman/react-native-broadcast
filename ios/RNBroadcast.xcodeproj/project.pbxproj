@@ -212,6 +212,9 @@
 		4BC7602C1E92CA29000373DA /* log.c in Sources */ = {isa = PBXBuildFile; fileRef = 4BC75F611E92CA29000373DA /* log.c */; };
 		4BC7602D1E92CA29000373DA /* parseurl.c in Sources */ = {isa = PBXBuildFile; fileRef = 4BC75F631E92CA29000373DA /* parseurl.c */; };
 		4BC7602E1E92CA29000373DA /* rtmp.c in Sources */ = {isa = PBXBuildFile; fileRef = 4BC75F641E92CA29000373DA /* rtmp.c */; };
+		4BC760361E92CA67000373DA /* LFLivePreview.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC760301E92CA67000373DA /* LFLivePreview.m */; };
+		4BC760371E92CA67000373DA /* UIControl+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC760331E92CA67000373DA /* UIControl+YYAdd.m */; };
+		4BC760381E92CA67000373DA /* UIView+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC760351E92CA67000373DA /* UIView+YYAdd.m */; };
 		B3E7B58A1CC2AC0600A0062D /* RNBroadcast.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNBroadcast.m */; };
 /* End PBXBuildFile section */
 
@@ -644,6 +647,12 @@
 		4BC75F641E92CA29000373DA /* rtmp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rtmp.c; sourceTree = "<group>"; };
 		4BC75F651E92CA29000373DA /* rtmp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rtmp.h; sourceTree = "<group>"; };
 		4BC75F661E92CA29000373DA /* rtmp_sys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rtmp_sys.h; sourceTree = "<group>"; };
+		4BC7602F1E92CA67000373DA /* LFLivePreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFLivePreview.h; sourceTree = "<group>"; };
+		4BC760301E92CA67000373DA /* LFLivePreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFLivePreview.m; sourceTree = "<group>"; };
+		4BC760321E92CA67000373DA /* UIControl+YYAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+YYAdd.h"; sourceTree = "<group>"; };
+		4BC760331E92CA67000373DA /* UIControl+YYAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+YYAdd.m"; sourceTree = "<group>"; };
+		4BC760341E92CA67000373DA /* UIView+YYAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YYAdd.h"; sourceTree = "<group>"; };
+		4BC760351E92CA67000373DA /* UIView+YYAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YYAdd.m"; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNBroadcast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNBroadcast.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNBroadcast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNBroadcast.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1197,11 +1206,25 @@
 			path = "pili-librtmp";
 			sourceTree = "<group>";
 		};
+		4BC760311E92CA67000373DA /* category */ = {
+			isa = PBXGroup;
+			children = (
+				4BC760321E92CA67000373DA /* UIControl+YYAdd.h */,
+				4BC760331E92CA67000373DA /* UIControl+YYAdd.m */,
+				4BC760341E92CA67000373DA /* UIView+YYAdd.h */,
+				4BC760351E92CA67000373DA /* UIView+YYAdd.m */,
+			);
+			path = category;
+			sourceTree = "<group>";
+		};
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
 				B3E7B5881CC2AC0600A0062D /* RNBroadcast.h */,
 				B3E7B5891CC2AC0600A0062D /* RNBroadcast.m */,
+				4BC7602F1E92CA67000373DA /* LFLivePreview.h */,
+				4BC760301E92CA67000373DA /* LFLivePreview.m */,
+				4BC760311E92CA67000373DA /* category */,
 				4BC75DC01E92CA28000373DA /* LFLiveKit */,
 				134814211AA4EA7D00B7C361 /* Products */,
 				4B0013791E92A69800FE1DD6 /* Frameworks */,
@@ -1308,6 +1331,7 @@
 				4BC760151E92CA29000373DA /* GPUImageToonFilter.m in Sources */,
 				4BC75FEF1E92CA29000373DA /* GPUImagePosterizeFilter.m in Sources */,
 				4BC75F7A1E92CA29000373DA /* LFStreamingBuffer.m in Sources */,
+				4BC760381E92CA67000373DA /* UIView+YYAdd.m in Sources */,
 				4BC75FB11E92CA29000373DA /* GPUImageGammaFilter.m in Sources */,
 				4BC760081E92CA29000373DA /* GPUImageSphereRefractionFilter.m in Sources */,
 				4BC75FF61E92CA29000373DA /* GPUImageRGBFilter.m in Sources */,
@@ -1414,12 +1438,14 @@
 				4BC75FD71E92CA29000373DA /* GPUImageMedianFilter.m in Sources */,
 				4BC75FB51E92CA29000373DA /* GPUImageGlassSphereFilter.m in Sources */,
 				4BC7601C1E92CA29000373DA /* GPUImageUnsharpMaskFilter.m in Sources */,
+				4BC760371E92CA67000373DA /* UIControl+YYAdd.m in Sources */,
 				4BC75FB41E92CA29000373DA /* GPUImageGaussianSelectiveBlurFilter.m in Sources */,
 				4BC75F861E92CA29000373DA /* GPUImageBilateralFilter.m in Sources */,
 				4BC75FB91E92CA29000373DA /* GPUImageHarrisCornerDetectionFilter.m in Sources */,
 				4BC7600F1E92CA29000373DA /* GPUImageThreeInputFilter.m in Sources */,
 				4BC7601F1E92CA29000373DA /* GPUImageVoronoiConsumerFilter.m in Sources */,
 				4BC75FE81E92CA29000373DA /* GPUImagePerlinNoiseFilter.m in Sources */,
+				4BC760361E92CA67000373DA /* LFLivePreview.m in Sources */,
 				4BC75FE71E92CA29000373DA /* GPUImageParallelCoordinateLineTransformFilter.m in Sources */,
 				4BC75FAB1E92CA29000373DA /* GPUImageFilter.m in Sources */,
 				4BC75FF31E92CA29000373DA /* GPUImageRGBClosingFilter.m in Sources */,
