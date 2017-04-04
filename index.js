@@ -16,6 +16,7 @@ BroadcastView.propTypes = {
    * is looking straight down onto it.
    */
    rtmpURL: React.PropTypes.string,
+   cameraPosition: React.PropTypes.string,
    started: React.PropTypes.bool
 }
 

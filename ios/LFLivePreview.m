@@ -11,31 +11,13 @@
 #import "UIView+YYAdd.h"
 #import "LFLiveKit.h"
 
-inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
-    if (elapsed_milli <= 0) {
-        return @"N/A";
-    }
-
-    if (bytes <= 0) {
-        return @"0 KB/s";
-    }
-
-    float bytes_per_sec = ((float)bytes) * 1000.f /  elapsed_milli;
-    if (bytes_per_sec >= 1000 * 1000) {
-        return [NSString stringWithFormat:@"%.2f MB/s", ((float)bytes_per_sec) / 1000 / 1000];
-    } else if (bytes_per_sec >= 1000) {
-        return [NSString stringWithFormat:@"%.1f KB/s", ((float)bytes_per_sec) / 1000];
-    } else {
-        return [NSString stringWithFormat:@"%ld B/s", (long)bytes_per_sec];
-    }
-}
-
 @interface LFLivePreview ()<LFLiveSessionDelegate>
 
 @property (nonatomic, strong) UIView *containerView;
 @property (nonatomic, strong) LFLiveDebug *debugInfo;
 @property (nonatomic, strong) LFLiveSession *session;
 @property (nonatomic, strong) NSString *rtmpURL;
+@property (nonatomic, strong) NSString *cameraPosition;
 
 @end
 
@@ -83,8 +65,20 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
 - (void) setRtmpURL:(NSString *)rtmpURL
 {
     _rtmpURL=rtmpURL;
-    printf("set rtmpURL to");
 }
+
+- (void) setCameraPosition:(NSString *)cameraPosition
+{
+    if ([cameraPosition isEqualToString:@"front"]) {
+        self.session.captureDevicePosition = AVCaptureDevicePositionFront;
+    } else if ([cameraPosition isEqualToString:@"back"]) {
+        self.session.captureDevicePosition = AVCaptureDevicePositionBack;
+    }
+    printf("turning nowhere");
+    
+}
+
+
 
 
 
