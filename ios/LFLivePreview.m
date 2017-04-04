@@ -32,18 +32,16 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
 
 @interface LFLivePreview ()<LFLiveSessionDelegate>
 
-@property (nonatomic, strong) UIButton *beautyButton;
-@property (nonatomic, strong) UIButton *cameraButton;
-@property (nonatomic, strong) UIButton *closeButton;
-@property (nonatomic, strong) UIButton *startLiveButton;
 @property (nonatomic, strong) UIView *containerView;
 @property (nonatomic, strong) LFLiveDebug *debugInfo;
 @property (nonatomic, strong) LFLiveSession *session;
-@property (nonatomic, strong) UILabel *stateLabel;
+@property (nonatomic, strong) NSString *rtmpURL;
 
 @end
 
-@implementation LFLivePreview
+@implementation LFLivePreview {
+    BOOL started;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
@@ -51,38 +49,15 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
         self.layer.borderColor = UIColor.redColor.CGColor;
         
         _session = [[LFLiveSession alloc] initWithAudioConfiguration:[LFLiveAudioConfiguration defaultConfiguration] videoConfiguration:[LFLiveVideoConfiguration defaultConfiguration]];
-
-        
         self.containerView = [[UIView alloc]initWithFrame:[UIScreen mainScreen].applicationFrame];
-//        self.containerView.backgroundColor = [UIColor grayColor];
-//        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-//        [button addTarget:self
-//                   action:@selector(aMethod:)
-//         forControlEvents:UIControlEventTouchUpInside];
-//        [button setTitle:@"Show View" forState:UIControlStateNormal];
-//        button.frame = CGRectMake(0, 0, 200, 200);
-//        button.layer.backgroundColor = UIColor.blackColor.CGColor;
-//
         
         _session.preView = self.containerView;
         _session.delegate = self;
         [self addSubview:self.containerView];
         
-        
         [self.session setRunning:YES];
     }
     return self;
-}
-
-
-/** live debug info callback */
-- (void)liveSession:(nullable LFLiveSession *)session debugInfo:(nullable LFLiveDebug *)debugInfo {
-    NSLog(@"debugInfo uploadSpeed: %@", formatedSpeed(debugInfo.currentBandwidth, debugInfo.elapsedMilli));
-}
-
-/** callback socket errorcode */
-- (void)liveSession:(nullable LFLiveSession *)session errorCode:(LFLiveSocketErrorCode)errorCode {
-    NSLog(@"errorCode: %ld", errorCode);
 }
 
 #pragma mark -- Getter Setter
@@ -91,9 +66,24 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
         _session = [[LFLiveSession alloc] initWithAudioConfiguration:[LFLiveAudioConfiguration defaultConfiguration] videoConfiguration:[LFLiveVideoConfiguration defaultConfiguration]];
         _session.preView = self;
         _session.delegate = self;
-        printf("creating sessssssion");
     }
     return _session;
+}
+
+- (void)setStarted:(BOOL) started {
+    if(started){
+        LFLiveStreamInfo *stream = [LFLiveStreamInfo new];
+        stream.url = _rtmpURL;
+        [self.session startLive:stream];
+    } else {
+        [self.session stopLive];
+    }
+}
+
+- (void) setRtmpURL:(NSString *)rtmpURL
+{
+    _rtmpURL=rtmpURL;
+    printf("set rtmpURL to");
 }
 
 

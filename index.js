@@ -15,6 +15,8 @@ BroadcastView.propTypes = {
    * angle is ignored and the map is always displayed as if the user
    * is looking straight down onto it.
    */
+   rtmpURL: React.PropTypes.string,
+   started: React.PropTypes.bool
 }
 
 var RNBroadcastView = requireNativeComponent('RNBroadcastView', BroadcastView)
