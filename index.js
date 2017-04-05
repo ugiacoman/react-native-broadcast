@@ -9,14 +9,18 @@ class BroadcastView extends React.Component {
 
 BroadcastView.propTypes = {
   /**
-   * When this property is set to `true` and a valid camera is associated
-   * with the map, the camera’s pitch angle is used to tilt the plane
-   * of the map. When this property is set to `false`, the camera’s pitch
-   * angle is ignored and the map is always displayed as if the user
-   * is looking straight down onto it.
+   * rtmpURL: RTMP server to stream to ex: rtmp://youtube.com/....
+   * cameraPosition: 'front' or 'back'
+   * deviceOrientation: Which orientation to stream
+      - Portrait: 1
+      - UpsideDown: 2
+      - LandscapeRight: 3
+      - LandscapeLeft: 4
+   * started: whether to start or stop streaming
    */
    rtmpURL: React.PropTypes.string,
    cameraPosition: React.PropTypes.string,
+   deviceOrientation: React.PropTypes.number,
    started: React.PropTypes.bool
 }
 
