@@ -7,6 +7,7 @@ import java.util.Arrays;
 import android.graphics.Color;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.widget.LinearLayout;
 
 import com.facebook.react.ReactRootView;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -27,6 +28,8 @@ import net.ossrs.yasea.SrsEncodeHandler;
 import net.ossrs.yasea.SrsPublisher;
 import net.ossrs.yasea.SrsRecordHandler;
 
+import static android.graphics.Color.BLUE;
+
 
 public class RNBroadcastViewManager extends SimpleViewManager<ReactImageView> {
 
@@ -42,19 +45,24 @@ public class RNBroadcastViewManager extends SimpleViewManager<ReactImageView> {
     return new ReactImageView(context, Fresco.newDraweeControllerBuilder(), null);
   }
 
-  @ReactProp(name = "src")
-  public void setSrc(ReactImageView view, @Nullable String src) {
-    Log.d("asdf", "In manager src prop is: " + src);
-//    view.setSource(null);
+  @ReactProp(name = "rtmpURL")
+  public void setRtmpURL(ReactImageView view, @Nullable String rtmpURL) {
+    Log.d("RNBroadcast", "In manager src prop is: " + rtmpURL);
   }
 
-  @ReactProp(name = "borderRadius", defaultFloat = 0f)
-  public void setBorderRadius(ReactImageView view, float borderRadius) {
-    view.setBorderRadius(borderRadius);
+  @ReactProp(name = "cameraPosition")
+  public void setCameraPosition(ReactImageView view, @Nullable String cameraPosition) {
+    Log.d("RNBroadcast", "Camera Position: " + cameraPosition);
   }
 
-  @ReactProp(name = ViewProps.RESIZE_MODE)
-  public void setResizeMode(ReactImageView view, @Nullable String resizeMode) {
-    view.setScaleType(ImageResizeMode.toScaleType(resizeMode));
+  @ReactProp(name = "deviceOrientation")
+  public void setDeviceOrientation(ReactImageView view, @Nullable Integer deviceOrientation) {
+    Log.d("RNBroadcast", "Device orientation" + deviceOrientation);
   }
+
+  @ReactProp(name = "started")
+  public void setSrc(ReactImageView view, @Nullable Boolean started) {
+    Log.d("asdf", "Setting started to:" + started);
+  }
+
 }

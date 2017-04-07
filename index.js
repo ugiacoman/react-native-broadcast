@@ -18,14 +18,11 @@ BroadcastView.propTypes = {
       - LandscapeLeft: 4
    * started: whether to start or stop streaming
    */
-  //  rtmpURL: React.PropTypes.string,
-  //  cameraPosition: React.PropTypes.string,
-  //  deviceOrientation: React.PropTypes.number,
-  //  started: React.PropTypes.bool,
   ...View.propTypes,
-  accessibilityLabel: PropTypes.string,
-  src: PropTypes.string
-
+  rtmpURL: PropTypes.string,
+  cameraPosition: React.PropTypes.string,
+  deviceOrientation: React.PropTypes.number,
+  started: React.PropTypes.bool
 }
 
 var RNBroadcastView = requireNativeComponent('RNBroadcastView', BroadcastView)
