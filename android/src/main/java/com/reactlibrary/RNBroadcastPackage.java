@@ -13,7 +13,7 @@ import com.facebook.react.bridge.JavaScriptModule;
 public class RNBroadcastPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-      return Arrays.<NativeModule>asList(new RNBroadcastModule(reactContext));
+      return Arrays.<NativeModule>asList(new RNBroadcastModule());
     }
 
     @Override
@@ -23,6 +23,9 @@ public class RNBroadcastPackage implements ReactPackage {
 
     @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
-      return Collections.emptyList();
+        return Arrays.<ViewManager>asList(
+                new RNBroadcastModule()
+        );
     }
 }
+
