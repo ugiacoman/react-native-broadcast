@@ -22,7 +22,7 @@ BroadcastView.propTypes = {
   //  cameraPosition: React.PropTypes.string,
   //  deviceOrientation: React.PropTypes.number,
   //  started: React.PropTypes.bool,
-  ...View.propTypes
+  ...View.propTypes,
   accessibilityLabel: PropTypes.string,
   src: PropTypes.string
 
