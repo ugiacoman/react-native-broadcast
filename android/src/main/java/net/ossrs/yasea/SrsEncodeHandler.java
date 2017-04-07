@@ -3,6 +3,8 @@ package net.ossrs.yasea;
 import android.os.Handler;
 import android.os.Message;
 
+import com.facebook.react.uimanager.ThemedReactContext;
+
 import java.lang.ref.WeakReference;
 
 /**
@@ -20,6 +22,7 @@ public class SrsEncodeHandler extends Handler {
     public SrsEncodeHandler(SrsEncodeListener listener) {
         mWeakListener = new WeakReference<>(listener);
     }
+
 
     public void notifyNetworkWeak() {
         sendEmptyMessage(MSG_ENCODE_NETWORK_WEAK);
