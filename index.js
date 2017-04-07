@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes, View } from 'react'
 import { requireNativeComponent } from 'react-native'
 
 class BroadcastView extends React.Component {
@@ -22,9 +22,9 @@ BroadcastView.propTypes = {
   //  cameraPosition: React.PropTypes.string,
   //  deviceOrientation: React.PropTypes.number,
   //  started: React.PropTypes.bool,
-  ...React.View.PropTypes,
-  accessibilityLabel: React.PropTypes.string,
-  src: React.PropTypes.string
+  ...View.propTypes
+  accessibilityLabel: PropTypes.string,
+  src: PropTypes.string
 
 }
 
