@@ -22,7 +22,8 @@ BroadcastView.propTypes = {
   //  cameraPosition: React.PropTypes.string,
   //  deviceOrientation: React.PropTypes.number,
   //  started: React.PropTypes.bool,
-  ...React.View.propTypes,
+  ...React.View.PropTypes,
+  accessibilityLabel: React.PropTypes.string,
   src: React.PropTypes.string
 
 }
@@ -30,3 +31,18 @@ BroadcastView.propTypes = {
 var RNBroadcastView = requireNativeComponent('RNBroadcastView', BroadcastView)
 
 module.exports = BroadcastView
+
+
+// import { PropTypes } from 'react'
+// import { requireNativeComponent, View } from 'react-native'
+//
+// var BroadcastView = {
+//   name: 'BroadcastView',
+//   propTypes: {
+//      ...View.propTypes,
+//      accessibilityLabel: PropTypes.string
+//     src: PropTypes.string
+//   }
+// }
+//
+// module.exports = requireNativeComponent('RNBroadcastView', BroadcastView)
