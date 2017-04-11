@@ -40,6 +40,7 @@ public class RNBroadcastViewManager extends SimpleViewManager<SrsCameraView> imp
 
   public static final String REACT_CLASS = "RNBroadcastView";
   private SrsPublisher mPublisher;
+  private String rtmpURL;
   private ThemedReactContext mContext = null;
 
   @Override
@@ -50,13 +51,8 @@ public class RNBroadcastViewManager extends SimpleViewManager<SrsCameraView> imp
   @Override
   public SrsCameraView createViewInstance(ThemedReactContext context) {
     this.mContext = context;
-    return new SrsCameraView(context);
-  }
 
-  @ReactProp(name = "rtmpURL")
-  public void setRtmpURL(SrsCameraView view, @Nullable String rtmpURL) {
-    Log.d("RNBroadcast", "In manager src prop is: " + rtmpURL);
-
+    SrsCameraView view = new SrsCameraView(context);
     mPublisher = new SrsPublisher(view);
     mPublisher.setEncodeHandler(new SrsEncodeHandler(this));
     mPublisher.setRtmpHandler(new RtmpHandler(this));
@@ -66,6 +62,13 @@ public class RNBroadcastViewManager extends SimpleViewManager<SrsCameraView> imp
     mPublisher.setVideoHDMode();
     mPublisher.startCamera();
     mPublisher.startPublish("rtmp://a.rtmp.youtube.com/live2/hsa4-3pyd-7s00-2qmz");
+    return view;
+  }
+
+  @ReactProp(name = "rtmpURL")
+  public void setRtmpURL(SrsCameraView view, @Nullable String rtmpURL) {
+    Log.d("RNBroadcast", "In manager src prop is: " + rtmpURL);
+    this.rtmpURL = rtmpURL;
   }
 
   @ReactProp(name = "cameraPosition")
@@ -96,7 +99,7 @@ public class RNBroadcastViewManager extends SimpleViewManager<SrsCameraView> imp
   public void started(SrsCameraView view, @Nullable Boolean started) {
     Log.d("asdf", "Setting started to:" + started);
     if (started == true) {
-      mPublisher.startPublish("rtmp://a.rtmp.youtube.com/live2/hsa4-3pyd-7s00-2qmz");
+      mPublisher.startPublish(this.rtmpURL);
     }
 //    else {
 //      mPublisher.stopPublish();

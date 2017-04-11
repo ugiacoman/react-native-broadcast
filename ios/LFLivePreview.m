@@ -25,13 +25,8 @@
     BOOL started;
 }
 
-
-
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        self.layer.borderWidth = 3;
-        self.layer.borderColor = UIColor.redColor.CGColor;
-        
         self.containerView = [[UIView alloc]initWithFrame:[UIScreen mainScreen].applicationFrame];
         [self addSubview:self.containerView];
         [self.session setRunning:YES];
@@ -52,7 +47,7 @@
         videoConfiguration.outputImageOrientation = UIInterfaceOrientationLandscapeLeft;
         videoConfiguration.autorotate = YES;
         videoConfiguration.sessionPreset = LFCaptureSessionPreset720x1280;
-        
+
         _session = [[LFLiveSession alloc] initWithAudioConfiguration:[LFLiveAudioConfiguration defaultConfiguration] videoConfiguration:videoConfiguration];
 
         _session.preView = self.containerView;
@@ -102,4 +97,3 @@
 }
 
 @end
-
