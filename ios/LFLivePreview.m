@@ -44,7 +44,7 @@
         videoConfiguration.videoMinBitRate = 500*1024;
         videoConfiguration.videoFrameRate = 24;
         videoConfiguration.videoMaxKeyframeInterval = 48;
-        videoConfiguration.outputImageOrientation = UIInterfaceOrientationLandscapeLeft;
+        videoConfiguration.outputImageOrientation = UIInterfaceOrientationLandscapeRight;
         videoConfiguration.autorotate = YES;
         videoConfiguration.sessionPreset = LFCaptureSessionPreset720x1280;
 

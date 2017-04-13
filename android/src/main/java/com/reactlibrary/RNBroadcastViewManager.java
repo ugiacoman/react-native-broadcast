@@ -53,15 +53,15 @@ public class RNBroadcastViewManager extends SimpleViewManager<SrsCameraView> imp
     this.mContext = context;
 
     SrsCameraView view = new SrsCameraView(context);
-    mPublisher = new SrsPublisher(view);
-    mPublisher.setEncodeHandler(new SrsEncodeHandler(this));
-    mPublisher.setRtmpHandler(new RtmpHandler(this));
-    mPublisher.setRecordHandler(new SrsRecordHandler(this));
-    mPublisher.setPreviewResolution(640, 360);
-    mPublisher.setOutputResolution(720, 1280);
-    mPublisher.setVideoHDMode();
-    mPublisher.startCamera();
-    mPublisher.startPublish("rtmp://a.rtmp.youtube.com/live2/hsa4-3pyd-7s00-2qmz");
+    this.mPublisher = new SrsPublisher(view);
+    this.mPublisher.setEncodeHandler(new SrsEncodeHandler(this));
+    this.mPublisher.setRtmpHandler(new RtmpHandler(this));
+    this.mPublisher.setRecordHandler(new SrsRecordHandler(this));
+    this.mPublisher.setPreviewResolution(1280, 720);
+    this.mPublisher.setOutputResolution(1280, 720);
+    this.mPublisher.setVideoHDMode();
+    this.mPublisher.startCamera();
+    this.mPublisher.startPublish("rtmp://a.rtmp.youtube.com/live2/hsa4-3pyd-7s00-2qmz");
     return view;
   }
 
@@ -75,16 +75,16 @@ public class RNBroadcastViewManager extends SimpleViewManager<SrsCameraView> imp
   public void setCameraPosition(SrsCameraView view, @Nullable String cameraPosition) {
     Log.d("RNBroadcast", "Camera Position: " + cameraPosition);
     if (cameraPosition == "front") {
-      mPublisher.switchCameraFace(0);
+      this.mPublisher.switchCameraFace(0);
     } else if (cameraPosition == "back") {
-      mPublisher.switchCameraFace(1);
+      this.mPublisher.switchCameraFace(1);
     }
   }
 
   private void handleException(Exception e) {
     try {
-      mPublisher.stopPublish();
-      mPublisher.stopRecord();
+      this.mPublisher.stopPublish();
+      this.mPublisher.stopRecord();
     } catch (Exception e1) {
       //
     }
@@ -97,9 +97,9 @@ public class RNBroadcastViewManager extends SimpleViewManager<SrsCameraView> imp
 
   @ReactProp(name = "started")
   public void started(SrsCameraView view, @Nullable Boolean started) {
-    Log.d("asdf", "Setting started to:" + started);
+    Log.d("asdf", "Setting started to:" + started + this.rtmpURL);
     if (started == true) {
-      mPublisher.startPublish(this.rtmpURL);
+      this.mPublisher.startPublish(this.rtmpURL);
     }
 //    else {
 //      mPublisher.stopPublish();
