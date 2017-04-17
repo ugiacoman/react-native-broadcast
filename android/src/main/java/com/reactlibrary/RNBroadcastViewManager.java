@@ -59,16 +59,16 @@ public class RNBroadcastViewManager extends SimpleViewManager<SrsCameraView> imp
     this.mPublisher.setRecordHandler(new SrsRecordHandler(this));
     this.mPublisher.setPreviewResolution(1280, 720);
     this.mPublisher.setOutputResolution(1280, 720);
+    this.mPublisher.setScreenOrientation(2);
     this.mPublisher.setVideoHDMode();
     this.mPublisher.startCamera();
-    this.mPublisher.startPublish("rtmp://a.rtmp.youtube.com/live2/hsa4-3pyd-7s00-2qmz");
     return view;
   }
 
   @ReactProp(name = "rtmpURL")
   public void setRtmpURL(SrsCameraView view, @Nullable String rtmpURL) {
     Log.d("RNBroadcast", "In manager src prop is: " + rtmpURL);
-    this.rtmpURL = rtmpURL;
+    this.rtmpURL = "rtmp://a.rtmp.youtube.com/live2/hsa4-3pyd-7s00-2qmz";
   }
 
   @ReactProp(name = "cameraPosition")
