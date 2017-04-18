@@ -1,9 +1,9 @@
 //
 //  LFLivePreview.h
-//  LFLiveKit
+//  RNBroadcast
 //
-//  Created by 倾慕 on 16/5/2.
-//  Copyright © 2016年 live Interactive. All rights reserved.
+//  Created by uli on 3/20/17.
+//  Copyright © 2017 Ulises Giacoman. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

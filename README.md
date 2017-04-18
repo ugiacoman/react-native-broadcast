@@ -9,8 +9,17 @@
 
 `$ react-native link react-native-broadcast`
 
-### Manual installation
+* iOS: Add `Privacy - Camera Usage Description` and `Privacy - Microphone Usage Description` to your project's Info.plist
 
+* Android: Add the following permissions to your Android Manifest
+    ```xml
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.RECORD_VIDEO"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    ```
+
+### Manual installation
 
 #### iOS
 
@@ -33,21 +42,19 @@
 3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
   	```
       compile project(':react-native-broadcast')
-  	```
-
-#### Windows
-[Read it! :D](https://github.com/ReactWindows/react-native)
-
-1. In Visual Studio add the `RNBroadcast.sln` in `node_modules/react-native-broadcast/windows/RNBroadcast.sln` folder to their solution, reference from their app.
-2. Open up your `MainPage.cs` app
-  - Add `using Com.Reactlibrary.RNBroadcast;` to the usings at the top of the file
-  - Add `new RNBroadcastPackage()` to the `List<IReactPackage>` returned by the `Packages` method
-
+    ```
 
 ## Usage
-```javascript
-import RNBroadcast from 'react-native-broadcast';
 
-// TODO: What to do with the module?
-RNBroadcast;
+* Start publishing by providing an rtmpURL.
+* Stop publishing by providing an empty string: ''
+* Camera Position can be either 'front' or 'back'
+
+```javascript
+import BroadcastView from 'react-native-broadcast';
+
+<BroadcastView
+  publish='rtmp://a.rtmp.youtube.com/live2/...'
+  cameraPosition='front'
+/>
 ```

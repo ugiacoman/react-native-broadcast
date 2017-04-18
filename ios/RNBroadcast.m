@@ -1,3 +1,10 @@
+//
+//  RNBroadcast.m
+//  RNBroadcast
+//
+//  Created by uli on 3/20/17.
+//  Copyright © 2017 Ulises Giacoman. All rights reserved.
+//
 
 #import "LFLivePreview.h"
 #import <React/RCTViewManager.h>

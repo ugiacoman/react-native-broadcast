@@ -1,9 +1,9 @@
 //
 //  LFLivePreview.m
-//  LFLiveKit
+//  RNBroadcast
 //
-//  Created by 倾慕 on 16/5/2.
-//  Copyright © 2016年 live Interactive. All rights reserved.
+//  Created by uli on 3/20/17.
+//  Copyright © 2017 Ulises Giacoman. All rights reserved.
 //
 
 #import "LFLivePreview.h"
@@ -32,7 +32,6 @@
     return self;
 }
 
-#pragma mark -- Getter Setter
 - (LFLiveSession*)session {
     if (!_session) {
         LFLiveVideoConfiguration *videoConfiguration = [LFLiveVideoConfiguration new];
