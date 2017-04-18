@@ -38,47 +38,38 @@ import static com.facebook.react.common.ReactConstants.TAG;
 public class RNBroadcastViewManager extends SimpleViewManager<SrsCameraView> implements RtmpHandler.RtmpListener,
         SrsRecordHandler.SrsRecordListener, SrsEncodeHandler.SrsEncodeListener {
 
-  public static final String REACT_CLASS = "RNBroadcastView";
-  private SrsPublisher mPublisher;
-  private String rtmpURL;
-  private ThemedReactContext mContext = null;
+    public static final String REACT_CLASS = "RNBroadcastView";
+    private SrsPublisher mPublisher;
+    private ThemedReactContext mContext = null;
+    private Boolean isLive = false;
 
-  @Override
-  public String getName() {
+
+    @Override
+    public String getName() {
     return REACT_CLASS;
   }
 
-  @Override
-  public SrsCameraView createViewInstance(ThemedReactContext context) {
-    this.mContext = context;
+    @Override
+    public SrsCameraView createViewInstance(ThemedReactContext context) {
+      this.mContext = context;
 
-    SrsCameraView view = new SrsCameraView(context);
-    this.mPublisher = new SrsPublisher(view);
-    this.mPublisher.setEncodeHandler(new SrsEncodeHandler(this));
-    this.mPublisher.setRtmpHandler(new RtmpHandler(this));
-    this.mPublisher.setRecordHandler(new SrsRecordHandler(this));
-    this.mPublisher.setPreviewResolution(1280, 720);
-    this.mPublisher.setOutputResolution(1280, 720);
-    this.mPublisher.setScreenOrientation(2);
-    this.mPublisher.setVideoHDMode();
-    this.mPublisher.startCamera();
-    return view;
-  }
-
-  @ReactProp(name = "rtmpURL")
-  public void setRtmpURL(SrsCameraView view, @Nullable String rtmpURL) {
-    Log.d("RNBroadcast", "In manager src prop is: " + rtmpURL);
-    this.rtmpURL = "rtmp://a.rtmp.youtube.com/live2/hsa4-3pyd-7s00-2qmz";
-  }
+      SrsCameraView view = new SrsCameraView(context);
+      this.mPublisher = new SrsPublisher(view);
+      this.mPublisher.setEncodeHandler(new SrsEncodeHandler(this));
+      this.mPublisher.setRtmpHandler(new RtmpHandler(this));
+      this.mPublisher.setRecordHandler(new SrsRecordHandler(this));
+      this.mPublisher.setPreviewResolution(1280, 720);
+      this.mPublisher.setOutputResolution(1280, 720);
+      this.mPublisher.setScreenOrientation(2);
+      this.mPublisher.switchToSoftEncoder();
+      this.mPublisher.setVideoHDMode();
+      this.mPublisher.startCamera();
+      return view;
+    }
 
   @ReactProp(name = "cameraPosition")
   public void setCameraPosition(SrsCameraView view, @Nullable String cameraPosition) {
-    Log.d("RNBroadcast", "Camera Position: " + cameraPosition);
-    if (cameraPosition == "front") {
-      this.mPublisher.switchCameraFace(0);
-    } else if (cameraPosition == "back") {
-      this.mPublisher.switchCameraFace(1);
-    }
+    mPublisher.switchCameraFace((mPublisher.getCamraId() + 1) % Camera.getNumberOfCameras());
   }
 
   private void handleException(Exception e) {
@@ -90,21 +81,15 @@ public class RNBroadcastViewManager extends SimpleViewManager<SrsCameraView> imp
     }
   }
 
-  @ReactProp(name = "deviceOrientation")
-  public void setDeviceOrientation(SrsCameraView view, @Nullable Integer deviceOrientation) {
-    Log.d("RNBroadcast", "Device orientation" + deviceOrientation);
-  }
-
-  @ReactProp(name = "started")
-  public void started(SrsCameraView view, @Nullable Boolean started) {
-    Log.d("asdf", "Setting started to:" + started + this.rtmpURL);
-    if (started == true) {
-      this.mPublisher.startPublish(this.rtmpURL);
+  @ReactProp(name = "publish")
+  public void started(SrsCameraView view, @Nullable String publish) {
+    System.out.println("Starting: " + publish + "live: " + this.isLive);
+    if (!publish.isEmpty()) {
+      this.mPublisher.startPublish(publish);
     }
-//    else {
-//      mPublisher.stopPublish();
-//    }
-
+    else if (publish.isEmpty() && this.isLive){
+      this.mPublisher.stopPublish();
+    }
   }
 
   // Implementation of SrsRtmpListener.
@@ -121,15 +106,17 @@ public class RNBroadcastViewManager extends SimpleViewManager<SrsCameraView> imp
 
   @Override
   public void onRtmpVideoStreaming() {
+      this.isLive = true;
   }
 
   @Override
   public void onRtmpAudioStreaming() {
+    this.isLive = true;
   }
 
   @Override
   public void onRtmpStopped() {
-//    Toast.makeText(getApplicationContext(), "Stopped", Toast.LENGTH_SHORT).show();
+      this.isLive = false;
   }
 
   @Override

@@ -16,13 +16,11 @@
 @property (nonatomic, strong) UIView *containerView;
 @property (nonatomic, strong) LFLiveDebug *debugInfo;
 @property (nonatomic, strong) LFLiveSession *session;
-@property (nonatomic, strong) NSString *rtmpURL;
 @property (nonatomic, strong) NSString *cameraPosition;
-@property (nonatomic, assign) NSInteger *deviceOrientation;
+@property (nonatomic, strong) NSString *publish;
 @end
 
 @implementation LFLivePreview {
-    BOOL started;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -56,21 +54,14 @@
     return _session;
 }
 
-- (void)setStarted:(BOOL) started {
-    if(started){
-        printf("starting");
+- (void)setPublish:(NSString *) publish {
+    if (![publish isEqualToString:@""]) {
         LFLiveStreamInfo *stream = [LFLiveStreamInfo new];
-        stream.url = _rtmpURL;
+        stream.url = publish;
         [self.session startLive:stream];
     } else {
-        printf("stopping");
         [self.session stopLive];
     }
-}
-
-- (void) setRtmpURL:(NSString *)rtmpURL
-{
-    _rtmpURL=rtmpURL;
 }
 
 - (void) setCameraPosition:(NSString *)cameraPosition
@@ -79,20 +70,6 @@
         self.session.captureDevicePosition = AVCaptureDevicePositionFront;
     } else if ([cameraPosition isEqualToString:@"back"]) {
         self.session.captureDevicePosition = AVCaptureDevicePositionBack;
-    }
-}
-
-- (void) setDeviceOrientation:(NSInteger *)deviceOrientation
-{
-    printf("device orientation %ld", (long)deviceOrientation);
-    if ((long)deviceOrientation == 1) {
-        _deviceOrientation = UIInterfaceOrientationPortrait;
-    } else if ((long)deviceOrientation == 2) {
-        _deviceOrientation = UIInterfaceOrientationPortraitUpsideDown;
-    } else if ((long)deviceOrientation == 3) {
-        _deviceOrientation = UIInterfaceOrientationLandscapeRight;
-    } else if ((long)deviceOrientation == 4) {
-        _deviceOrientation = UIInterfaceOrientationLandscapeLeft;
     }
 }
 

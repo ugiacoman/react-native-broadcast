@@ -14,9 +14,7 @@ RCT_EXPORT_MODULE()
     CGRect screen = [[UIScreen mainScreen] bounds];
     return [[LFLivePreview alloc] initWithFrame:screen];
 }
-RCT_EXPORT_VIEW_PROPERTY(started, BOOL);
-RCT_EXPORT_VIEW_PROPERTY(rtmpURL, NSString);
+RCT_EXPORT_VIEW_PROPERTY(publish, NSString);
 RCT_EXPORT_VIEW_PROPERTY(cameraPosition, NSString);
-RCT_EXPORT_VIEW_PROPERTY(deviceOrientation, NSInteger);
 
 @end

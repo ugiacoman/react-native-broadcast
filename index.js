@@ -9,37 +9,15 @@ class BroadcastView extends React.Component {
 
 BroadcastView.propTypes = {
   /**
-   * rtmpURL: RTMP server to stream to ex: rtmp://youtube.com/....
    * cameraPosition: 'front' or 'back'
-   * deviceOrientation: Which orientation to stream
-      - Portrait: 1
-      - UpsideDown: 2
-      - LandscapeRight: 3
-      - LandscapeLeft: 4
-   * started: whether to start or stop streaming
+   * publish: If an rtmpURL is provided, will start publishing.
+              If empty string provided, will stop publishing.
    */
   ...View.propTypes,
-  rtmpURL: PropTypes.string,
   cameraPosition: React.PropTypes.string,
-  deviceOrientation: React.PropTypes.number,
-  started: React.PropTypes.bool
+  publish: React.PropTypes.string
 }
 
 var RNBroadcastView = requireNativeComponent('RNBroadcastView', BroadcastView)
 
 module.exports = BroadcastView
-
-
-// import { PropTypes } from 'react'
-// import { requireNativeComponent, View } from 'react-native'
-//
-// var BroadcastView = {
-//   name: 'BroadcastView',
-//   propTypes: {
-//      ...View.propTypes,
-//      accessibilityLabel: PropTypes.string
-//     src: PropTypes.string
-//   }
-// }
-//
-// module.exports = requireNativeComponent('RNBroadcastView', BroadcastView)
