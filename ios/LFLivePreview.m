@@ -25,7 +25,8 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        self.containerView = [[UIView alloc]initWithFrame:[UIScreen mainScreen].applicationFrame];
+        CGRect switchRect = CGRectMake([UIScreen mainScreen].applicationFrame.origin.x, [UIScreen mainScreen].applicationFrame.origin.y, [UIScreen mainScreen].applicationFrame.size.height, [UIScreen mainScreen].applicationFrame.size.width);
+        self.containerView = [[UIView alloc]initWithFrame:switchRect];
         [self addSubview:self.containerView];
         [self.session setRunning:YES];
     }
