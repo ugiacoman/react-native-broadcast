@@ -36,7 +36,7 @@
 - (LFLiveSession*)session {
     if (!_session) {
         LFLiveVideoConfiguration *videoConfiguration = [LFLiveVideoConfiguration new];
-        videoConfiguration.videoSize = CGSizeMake(640, 360);
+        videoConfiguration.videoSize = CGSizeMake(1280, 720);
         videoConfiguration.videoBitRate = 800*1024;
         videoConfiguration.videoMaxBitRate = 1000*1024;
         videoConfiguration.videoMinBitRate = 500*1024;
@@ -45,9 +45,9 @@
         videoConfiguration.outputImageOrientation = UIInterfaceOrientationLandscapeRight;
         videoConfiguration.autorotate = YES;
         videoConfiguration.sessionPreset = LFCaptureSessionPreset720x1280;
-
+        
         _session = [[LFLiveSession alloc] initWithAudioConfiguration:[LFLiveAudioConfiguration defaultConfiguration] videoConfiguration:videoConfiguration];
-
+        
         _session.preView = self.containerView;
         _session.delegate = self;
     }
